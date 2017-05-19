@@ -1,0 +1,4 @@
+github "Alamofire/Alamofire" "4.4.0"
+github "ReSwift/ReSwift" "4.0.0"
+github "SwiftyJSON/SwiftyJSON" "3.1.4"
+github "kylef/WebLinking.swift" "fddbacc30deab8afe12ce1d3b78bd27c593a0c29"
