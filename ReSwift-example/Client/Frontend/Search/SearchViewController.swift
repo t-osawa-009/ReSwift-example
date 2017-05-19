@@ -68,10 +68,10 @@ extension SearchViewController: UITableViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
         if tableView.contentOffset.y + tableView.frame.size.height > tableView.contentSize.height && tableView.isDragging {
-            guard !store.state.searchState.isLoading else {
+            guard !searchState.isLoading else {
                 return
             }
-            store.dispatch(SearchAction.Creator.fetchSearchResult(query: defaultquery, page: store.state.searchState.page + 1))
+            store.dispatch(SearchAction.Creator.fetchSearchResult(query: defaultquery, page: searchState.page + 1))
         }
     }
 }
