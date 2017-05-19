@@ -28,7 +28,7 @@ final class SearchViewController: UIViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        store.dispatch(SearchAction.Creator.fetchSearch(query: defaultquery, page: 1))
+        store.dispatch(SearchAction.Creator.fetchSearchResult(query: defaultquery, page: 1))
         refreshControl.addTarget(self, action: #selector(type(of: self).refreshControlChanged(_:)), for: .valueChanged)
         tableView.addSubview(refreshControl)
     }
@@ -42,7 +42,7 @@ final class SearchViewController: UIViewController {
         
         if searchState.needsToRefresh {
             tableView.contentOffset = CGPoint(x: 0, y: tableView.contentInset.top)
-            store.dispatch(SearchAction.Creator.fetchSearch(query: defaultquery, page: 1))
+            store.dispatch(SearchAction.Creator.fetchSearchResult(query: defaultquery, page: 1))
         }
     }
     
@@ -55,7 +55,7 @@ final class SearchViewController: UIViewController {
     func refreshControlChanged(_ sender: Any) {
         refreshControl.beginRefreshing()
         store.dispatch(SearchAction.Refresh())
-        store.dispatch(SearchAction.Creator.fetchSearch(query: defaultquery, page: 1))
+        store.dispatch(SearchAction.Creator.fetchSearchResult(query: defaultquery, page: 1))
     }
 }
 
@@ -71,7 +71,7 @@ extension SearchViewController: UITableViewDelegate {
             guard !store.state.searchState.isLoading else {
                 return
             }
-            store.dispatch(SearchAction.Creator.fetchSearch(query: defaultquery, page: store.state.searchState.page + 1))
+            store.dispatch(SearchAction.Creator.fetchSearchResult(query: defaultquery, page: store.state.searchState.page + 1))
         }
     }
 }

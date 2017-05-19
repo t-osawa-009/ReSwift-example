@@ -15,7 +15,7 @@ struct SearchAction {
     struct StopLoading: Action {}
     
     struct Creator {
-        static func fetchSearch(query: String, page: Int) -> Store<AppState>.AsyncActionCreator {
+        static func fetchSearchResult(query: String, page: Int) -> Store<AppState>.AsyncActionCreator {
             return {state, store, callback in
                 store.dispatch(SearchAction.StartLoading())
                 APIClient.send(query: query, page: page, completion: { (models) in
