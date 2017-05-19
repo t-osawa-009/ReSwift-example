@@ -1,7 +1,6 @@
 import Foundation
 import Alamofire
 import SwiftyJSON
-import WebLinking
 
 final class APIClient {
     private init() {}
